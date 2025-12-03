@@ -7,3 +7,4 @@ sqlalchemy
 python_jose
 requests
 psycopg2
+google-genai
