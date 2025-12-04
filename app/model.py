@@ -19,6 +19,3 @@ class UserResponse(UserCreate):
     id : int
 
 
-class output_gemini(BaseModel):
-    resume : str
-    ton : str
