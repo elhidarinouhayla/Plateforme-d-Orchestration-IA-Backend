@@ -1,6 +1,6 @@
 from jose import jwt
 from fastapi import HTTPException, Header
-from config import SECRET_KEY, ALGORITHM
+from .config import SECRET_KEY, ALGORITHM
 from passlib.context import CryptContext
 
 
@@ -21,7 +21,7 @@ def verify_token(token: str = Header(...)):
     
 
 
-password_context = CryptContext(shemas=["argon2"], deprecated="auto")
+password_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
 def hache_password(password):
     return password_context.hash(password)

@@ -1,4 +1,4 @@
-from database import Base
+from .database import Base
 from pydantic import BaseModel
 from sqlalchemy import String, Integer, Column
 
