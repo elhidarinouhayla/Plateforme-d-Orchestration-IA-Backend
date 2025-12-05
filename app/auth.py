@@ -1,6 +1,7 @@
 from jose import jwt
 from fastapi import HTTPException, Header
 from config import SECRET_KEY, ALGORITHM
+from passlib.context import CryptContext
 
 
 def create_token(username:str):
@@ -17,5 +18,14 @@ def verify_token(token: str = Header(...)):
         return paylod
     except:
         raise HTTPException(status_code=400, detail="le token est invalide")
+    
 
+
+password_context = CryptContext(shemas=["argon2"], deprecated="auto")
+
+def hache_password(password):
+    return password_context.hash(password)
+
+def verify_password(password,hash_password):
+    return password_context.verify(password,hash_password)
     
