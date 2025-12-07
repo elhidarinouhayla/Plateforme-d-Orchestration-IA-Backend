@@ -1,8 +1,8 @@
 from fastapi import FastAPI,HTTPException,Depends
-from database import Base,engine,get_db
+from .database import Base,engine,get_db
 from sqlalchemy.orm import session
-from model import UserCreate, UserResponse, User
-from auth import create_token, verify_token, hache_password, verify_password
+from .model import UserCreate, UserResponse, User
+from .auth import create_token, verify_token, hache_password, verify_password
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -20,7 +20,7 @@ app.add_middleware(
 
 # creation d'un username :
 @app.post("/register", response_model=UserResponse)
-def create_user(user=UserCreate, db: session=Depends(get_db)):
+def create_user(user:UserCreate, db: session=Depends(get_db)):
     exist = db.query(User).filter(User.username == user.username).first()
 
     if exist:
@@ -29,7 +29,7 @@ def create_user(user=UserCreate, db: session=Depends(get_db)):
     # haching password
     hashed_pwd = hache_password(user.password)
     
-    new_user = User(username=user.username, password_hach=hashed_pwd)
+    new_user = User(username=user.username, password=hashed_pwd)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
@@ -39,15 +39,15 @@ def create_user(user=UserCreate, db: session=Depends(get_db)):
 
 
 # verifier l'identifiant et retourner token
-@app.post("/loging")
-def login(user=UserCreate, db: session=Depends(get_db)):
+@app.post("/login")
+def login(user:UserCreate, db: session=Depends(get_db)):
 
     db_user = db.query(User).filter(
         User.username == user.username,
-        User.password == user.password
+        # User.password == user.password
         ).first()
     
-    if not db_user or not verify_password(user.password,db_user.password_hach):
+    if not db_user or not verify_password(user.password,db_user.password):
         raise HTTPException(status_code=400, detail="username or password incorect")
     
     token = create_token(db_user.username)
@@ -56,3 +56,5 @@ def login(user=UserCreate, db: session=Depends(get_db)):
 
 
 
+# @app.post("/analyze")
+# def 
