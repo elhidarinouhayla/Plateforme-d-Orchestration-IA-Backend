@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from sqlalchemy import String, Integer, Column
 
 
-class User():
+class User(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String, nullable=False )
@@ -18,4 +18,8 @@ class UserCreate(BaseModel):
 class UserResponse(UserCreate):
     id : int
 
-
+# class AnalyzeSchema(BaseModel):
+#     resume : str
+#     ton : str
+#     categorie : str
+#     score : float
