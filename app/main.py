@@ -1,9 +1,10 @@
 from fastapi import FastAPI,HTTPException,Depends
 from .database import Base,engine,get_db
 from sqlalchemy.orm import session
-from .model import UserCreate, UserResponse, User
+from .model import UserCreate, UserResponse, User, AnalyzeSchema, AnalyzeRequest
 from .auth import create_token, verify_token, hache_password, verify_password
 from fastapi.middleware.cors import CORSMiddleware
+from .services.connection import classifier_and_analyze
 
 
 app = FastAPI()
@@ -56,5 +57,8 @@ def login(user:UserCreate, db: session=Depends(get_db)):
 
 
 
-# @app.post("/analyze")
-# def 
+@app.post("/analyze", response_model=AnalyzeSchema)
+def analyze(data: AnalyzeRequest, user: dict = Depends(verify_token)) :
+    result = classifier_and_analyze(data.text, data.candidate_labels)
+
+    return result
