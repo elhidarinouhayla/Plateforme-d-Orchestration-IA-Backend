@@ -1,5 +1,5 @@
-from classification import classifier
-from gemini_service import analyze_with_gemini
+from .classification import classifier
+from .gemini_service import analyze_with_gemini
 import json
 from pydantic import BaseModel
 
