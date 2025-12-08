@@ -17,45 +17,25 @@ Le backend sert de cœur d'orchestration pour l'analyse d'articles. Il fournit u
 ```
 
 backend/
-
-│
-
-├── models/
-
-│   └── model.py      
-
-│
-
+.
+├── app/
+│   ├── services/
+│   │   ├── classification.py    
+│   │   ├── gemini_service.py    
+│   │   └── connection.py        
+│   ├── auth.py              
+│   ├── database.py           
+│   ├── config.py              
+│   ├── models.py              
+│   ├── schemas_output_gemini.py 
+│   └── main.py                
 ├── tests/
-
-│   └── test_endpoint.py  
-
-│
-
-├── .env            
-
-├── .gitignore      
-
-├── auth.py        
-
-├── translate.py      
-
-├── config.py        
-
-├── database.py      
-
-├── main.py        
-
-│
-
-├── Dockerfile            
-
-├── docker-compose.yml    
-
-│
-
-├── requirements.txt      
-
+│   ├── test_mocke_gemini.py     
+│   └── test_mock_hugging_face.py 
+├── .env                       
+├── .gitignore                  
+├── requirements.txt           
+├── Dockerfile                  
 └── README.md            
 
 
