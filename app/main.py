@@ -30,7 +30,7 @@ def create_user(user:UserCreate, db: session=Depends(get_db)):
     # haching password
     hashed_pwd = hache_password(user.password)
     
-    new_user = User(username=user.username, password=hashed_pwd)
+    new_user = User(username=user.username, password=hashed_pwd, email=user.email)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
