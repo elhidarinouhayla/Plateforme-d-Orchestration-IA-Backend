@@ -14,13 +14,13 @@ def test_hugging_face(mocker):
     ]
 
 
-    fake = mocker.Mock()
-    fake.status_code = 200
-    fake.json.return_value = fake_output
+    fake_response = mocker.Mock()
+    fake_response.status_code = 200
+    fake_response.json.return_value = fake_output
 
     mocker.patch(
         "app.services.classification.requests.post",
-        return_value=fake
+        return_value=fake_response
     )
 
     result = classifier(
