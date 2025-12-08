@@ -6,7 +6,7 @@
 ## Objectif du projet
 
 
-Le backend sert de cœur d'orchestration pour l'analyse d'articles. Il fournit une API sécurisée (JWT) qui gère l'enchaînement des services d'Intelligence Artificielle : la Classification Zero-Shot (Hugging Face) pour la catégorisation, suivi de la Synthèse Contextuelle (Gemini API). Il est le garant de la sécurité, de la fiabilité et de la structure des données retournées au frontend.
+Le backend sert de cœur d'orchestration pour l'analyse d'articles. Il fournit une API sécurisée (JWT) qui gère l'enchaînement des services d'Intelligence Artificielle : la Classification Zero-Shot (Hugging Face) pour la catégorisation, suivi de la Synthèse Contextuelle (Gemini API). Il est le garant de la sécurité, de la fiabilité et de la structure des données retournées au frontend
 
 
 
