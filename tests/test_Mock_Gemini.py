@@ -1,9 +1,4 @@
-import os
-import sys
 import json
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from app.services.gemini_service import analyze_with_gemini
 
 

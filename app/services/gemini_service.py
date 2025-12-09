@@ -1,10 +1,6 @@
 from google import genai
-import os
-import sys
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from schemas_output_gemini import output_gemini
-from config import GEMINI_API_KEY
+from ..schemas_output_gemini import output_gemini
+from ..config import GEMINI_API_KEY
 
 
 
