@@ -159,13 +159,13 @@ PORT=5432
 
 
 ## Endpoint:/register et /login
-
+```
 Méthode |  Endpoint   | Description                                                       |
 ------------------------------------------------------------------------------------------|
 POST    | /register   | Enregistre un nouvel utilisateur (stockage du mot de passe hashe).|
 ------------------------------------------------------------------------------------------|
 POST    | /login      | Authentifie l'utilisateur et renvoie un token JWT.                | 
-
+```
 
 ## Endpoint Principal : /analyze
 
