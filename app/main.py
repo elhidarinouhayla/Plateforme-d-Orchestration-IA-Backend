@@ -1,7 +1,7 @@
 from fastapi import FastAPI,HTTPException,Depends
 from .database import Base,engine,get_db
 from sqlalchemy.orm import session
-from .model import UserCreate, UserResponse, User, AnalyzeSchema, AnalyzeRequest
+from .model import UserCreate, UserResponse, User, AnalyzeSchema, AnalyzeRequest, UserVerify
 from .auth import create_token, verify_token, hache_password, verify_password
 from fastapi.middleware.cors import CORSMiddleware
 from .services.connection import classifier_and_analyze
@@ -41,7 +41,7 @@ def create_user(user:UserCreate, db: session=Depends(get_db)):
 
 # verifier l'identifiant et retourner token
 @app.post("/login")
-def login(user:UserCreate, db: session=Depends(get_db)):
+def login(user:UserVerify, db: session=Depends(get_db)):
 
     db_user = db.query(User).filter(
         User.username == user.username,
