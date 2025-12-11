@@ -55,4 +55,4 @@ categorie = ["sante", "nouriture", "sport", "beaute", "fashion", "technologie"]
 
 result = classifier_and_analyze(text,categorie)
 
-print(result.model_dump_json())
+# print(result.model_dump_json())
