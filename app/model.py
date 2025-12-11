@@ -13,7 +13,6 @@ class User(Base):
 
 
 class UserCreate(BaseModel):
-    id : int
     username : str
     password : str
     email : str
