@@ -50,9 +50,9 @@ Donne moi :
 
     return output
 
-text = "L'équipe a dominé le match grâce à une possession de balle remarquable et un pressing constant."
-categorie = ["sante", "nouriture", "sport", "beaute", "fashion", "technologie"]
+# text = "L'équipe a dominé le match grâce à une possession de balle remarquable et un pressing constant."
+# categorie = ["sante", "nouriture", "sport", "beaute", "fashion", "technologie"]
 
-result = classifier_and_analyze(text,categorie)
+# result = classifier_and_analyze(text,categorie)
 
 # print(result.model_dump_json())
